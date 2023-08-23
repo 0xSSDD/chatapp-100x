@@ -5,14 +5,14 @@
   <link rel="stylesheet" href="/styles.css">
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 </head>
 <body>
   <div class="chat-container">
+    <div class="user-bar">
+      <h2>User Name</h2>
+      <!-- Add user-related information here -->
+    </div>
     <div class="chat-box">
-      <div class="chat-header">
-        <h1>Chat</h1>
-      </div>
       <div class="chat-messages" id="messages">
         <!-- Messages will be dynamically added here -->
       </div>
@@ -42,11 +42,6 @@
 
       socket.on('chat message', function (msg) {
         $('#messages').append($('<div class="message">').text(msg));
-      });
-
-      // Dark mode toggle
-      $('#toggle-mode').click(function () {
-        $('body').toggleClass('dark-mode');
       });
     });
   </script>
