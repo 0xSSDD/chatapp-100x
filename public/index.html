@@ -9,8 +9,7 @@
 <body>
   <div class="chat-container">
     <div class="user-bar">
-      <h2>User Name</h2>
-      <!-- Add user-related information here -->
+      <h2 id="username">User Name</h2>
     </div>
     <div class="chat-box">
       <div class="chat-messages" id="messages">
@@ -28,12 +27,33 @@
     $(document).ready(function () {
       var socket = io();
 
+      // Function to get and store the user's name
+      function getUserName() {
+        var name = prompt("Please enter your name:");
+        if (name !== null && name.trim() !== '') {
+          // Store the user's name in local storage
+          localStorage.setItem('username', name);
+          return name;
+        } else {
+          return "User Name"; // Default name if not provided
+        }
+      }
+
+      // Get the user's name from local storage or prompt
+      var userName = localStorage.getItem('username');
+      if (!userName) {
+        userName = getUserName();
+      }
+
+      // Update the user bar with the user's name
+      $('#username').text(userName);
+
       $('#form').submit(function (e) {
         e.preventDefault(); // Prevent the form from submitting
 
         var message = $('#message').val();
         if (message.trim() !== '') {
-          socket.emit('chat message', message);
+          socket.emit('chat message', userName + ': ' + message);
           $('#message').val('');
         }
 
