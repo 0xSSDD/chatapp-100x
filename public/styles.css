@@ -1,7 +1,7 @@
 /* Light mode styles */
 body {
-  background-color: #191919;
-  color: #c0c0c0;
+  background-color: #2196F3; /* Light blue background */
+  color: #333;
   font-family: 'Courier New', Courier, monospace;
   margin: 0;
   padding: 0;
@@ -25,24 +25,28 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
 .chat-header h1 {
   font-size: 28px;
   color: #29abe2;
   margin-bottom: 10px;
 }
 
-#toggle-mode {
-  background-color: #29abe2;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
+.mode-toggle {
   cursor: pointer;
-  font-size: 14px;
+  font-size: 24px;
+  color: #29abe2;
 }
 
-#toggle-mode:hover {
-  background-color: #1f8dc7;
+.mode-toggle:hover {
+  color: #1f8dc7;
 }
 
 .chat-messages {
@@ -104,11 +108,10 @@ body.dark-mode {
   color: #29abe2;
 }
 
-#toggle-mode.dark-mode {
-  background-color: #29abe2;
-  color: #fff;
+.mode-toggle.dark-mode {
+  color: #29abe2;
 }
 
-#toggle-mode.dark-mode:hover {
-  background-color: #1f8dc7;
+.mode-toggle.dark-mode:hover {
+  color: #1f8dc7;
 }
