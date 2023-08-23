@@ -7,11 +7,21 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-  <ul id="messages"></ul>
-  <form id="form" action="">
-    <input id="message" autocomplete="off" /><button>Send</button>
-  </form>
-  <button id="toggle-mode">Toggle Dark Mode</button>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h1>Socket.io Chat</h1>
+      <button id="toggle-mode">Toggle Dark Mode</button>
+    </div>
+    <div class="chat-messages" id="messages">
+      <!-- Messages will be dynamically added here -->
+    </div>
+    <div class="chat-input">
+      <form id="form" action="">
+        <input id="message" autocomplete="off" placeholder="Type your message" />
+        <button id="send">Send</button>
+      </form>
+    </div>
+  </div>
   <script>
     $(document).ready(function () {
       var socket = io();
@@ -29,7 +39,7 @@
       });
 
       socket.on('chat message', function (msg) {
-        $('#messages').append($('<li>').text(msg));
+        $('#messages').append($('<div class="message">').text(msg));
       });
 
       // Dark mode toggle
