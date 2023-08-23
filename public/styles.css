@@ -1,46 +1,48 @@
 /* Light mode styles */
 body {
-  background-color: #f0f0f0;
-  color: #333;
-  font-family: Arial, sans-serif;
+  background-color: #191919;
+  color: #c0c0c0;
+  font-family: 'Courier New', Courier, monospace;
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .chat-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
 }
 
-.chat-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ddd;
+.chat-box {
+  background-color: #101010;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 .chat-header h1 {
-  font-size: 24px;
-  color: #333;
+  font-size: 28px;
+  color: #29abe2;
+  margin-bottom: 10px;
 }
 
 #toggle-mode {
-  background-color: #333;
+  background-color: #29abe2;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 #toggle-mode:hover {
-  background-color: #444;
+  background-color: #1f8dc7;
 }
 
 .chat-messages {
@@ -49,11 +51,13 @@ body {
 }
 
 .message {
-  background-color: #e1e1e1;
-  color: #333;
+  background-color: #1f1f1f;
+  color: #c0c0c0;
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.4;
 }
 
 .chat-input {
@@ -68,30 +72,43 @@ body {
 #message {
   flex-grow: 1;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: none;
   border-radius: 5px 0 0 5px;
+  font-size: 16px;
+  background-color: #1f1f1f;
+  color: #c0c0c0;
 }
 
 #send {
-  background-color: #333;
+  background-color: #29abe2;
   color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
+  font-size: 16px;
 }
 
 #send:hover {
-  background-color: #444;
+  background-color: #1f8dc7;
 }
 
 /* Dark mode styles */
 body.dark-mode {
-  background-color: #222;
-  color: #fff;
+  background-color: #000;
+  color: #29abe2;
 }
 
 .message.dark-mode {
-  background-color: #333;
+  background-color: #0a0a0a;
+  color: #29abe2;
+}
+
+#toggle-mode.dark-mode {
+  background-color: #29abe2;
   color: #fff;
+}
+
+#toggle-mode.dark-mode:hover {
+  background-color: #1f8dc7;
 }
