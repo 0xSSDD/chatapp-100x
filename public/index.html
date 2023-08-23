@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Socket.io Chat</title>
+  <link rel="stylesheet" href="/styles.css">
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -10,6 +11,7 @@
   <form id="form" action="">
     <input id="message" autocomplete="off" /><button>Send</button>
   </form>
+  <button id="toggle-mode">Toggle Dark Mode</button>
   <script>
     $(document).ready(function () {
       var socket = io();
@@ -28,6 +30,11 @@
 
       socket.on('chat message', function (msg) {
         $('#messages').append($('<li>').text(msg));
+      });
+
+      // Dark mode toggle
+      $('#toggle-mode').click(function () {
+        $('body').toggleClass('dark-mode');
       });
     });
   </script>
