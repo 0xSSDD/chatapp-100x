@@ -40,6 +40,25 @@ io.on('connection', (socket) => {
     console.log('message: ' + messageWithEmojis);
   });
 
+  // Listen for slash commands
+  socket.on('slash command', (command) => {
+    switch (command) {
+      case '/random':
+        // Generate a random number between 1 and 100
+        const randomNum = Math.floor(Math.random() * 100) + 1;
+        socket.emit('chat message', 'Your random number: ' + randomNum);
+        break;
+      case '/help':
+        // Get the current UTC time
+        const currentTime = new Date().toUTCString();
+        socket.emit('chat message', 'Current UTC time is: ' + currentTime);
+        break;
+      default:
+        socket.emit('chat message', 'Unknown command: ' + command);
+        break;
+    }
+  });
+
   // Listen for disconnection
   socket.on('disconnect', () => {
     console.log('user disconnected');

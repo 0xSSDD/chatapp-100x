@@ -53,7 +53,12 @@
 
         var message = $('#message').val();
         if (message.trim() !== '') {
-          socket.emit('chat message', userName + ': ' + message);
+          // Check if the message is a slash command
+          if (message.startsWith('/')) {
+            socket.emit('slash command', message);
+          } else {
+            socket.emit('chat message', userName + ': ' + message);
+          }
           $('#message').val('');
         }
 
@@ -63,7 +68,13 @@
       socket.on('chat message', function (msg) {
         $('#messages').append($('<div class="message">').text(msg));
       });
+
+      // Handle responses to slash commands
+      socket.on('slash response', function (response) {
+        $('#messages').append($('<div class="message slash-response">').text(response));
+      });
     });
   </script>
+
 </body>
 </html>
