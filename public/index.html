@@ -48,6 +48,14 @@
       // Update the user bar with the user's name
       $('#username').text(userName);
 
+      // Function to display a pop-up with available slash commands
+      function showHelpPopup() {
+        var helpMessage = "Available Slash Commands:\n\n";
+        helpMessage += "/random - Generates a random number between 1 and 100.\n";
+        helpMessage += "/help - Displays this list of available commands.\n";
+        alert(helpMessage);
+      }
+
       $('#form').submit(function (e) {
         e.preventDefault(); // Prevent the form from submitting
 
@@ -55,7 +63,12 @@
         if (message.trim() !== '') {
           // Check if the message is a slash command
           if (message.startsWith('/')) {
-            socket.emit('slash command', message);
+            if (message === '/help') {
+              // Display the help pop-up
+              showHelpPopup();
+            } else {
+              socket.emit('slash command', message);
+            }
           } else {
             socket.emit('chat message', userName + ': ' + message);
           }
@@ -75,6 +88,7 @@
       });
     });
   </script>
+
 
 </body>
 </html>
